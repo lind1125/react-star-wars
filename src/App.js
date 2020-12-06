@@ -7,6 +7,7 @@ import './css/App.css';
 
 //components
 import Home from './components/Home'
+import Starships from './components/Starships'
 
 
 
@@ -15,6 +16,7 @@ function App() {
 return (
   <div>
     <Route path="/" exact component={Home} />
+    <Route path="/starships" component={Starships} />
   </div>
 )
 }
