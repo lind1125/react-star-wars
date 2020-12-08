@@ -39,7 +39,7 @@ function Home() {
       }else {
      return (starships.map((ship, index) => ( 
         <Link to={{pathname:`/starships/${index +2}`, state: {ship}}} >
-          <div key={starships.index} className="col s12 m6">
+          <div key={index} className="col s12 m6">
             <div className="card blue-grey darken-1">
               <div className="card-content white-text">
                 <span className="card-title">{ship.name}</span>
