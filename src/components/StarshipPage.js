@@ -8,7 +8,7 @@ import { render } from '@testing-library/react'
 
 
 function StarshipPage(props) {
-console.log(props)
+console.log(props.location.state.ship.url)
  // setting up initial state
  const [starshipInfo, setStarshipInfo] = useState({name: '', model: ''})
 
@@ -16,7 +16,7 @@ console.log(props)
  const [loading, setLoading] = useState(true)
 
  useEffect(() => {
-  axios.get(`http://swapi.dev/api${props.location.pathname}`).then((res) =>{
+  axios.get(props.location.state.ship.url).then((res) =>{
     setStarshipInfo({name: res.data.name, model: res.data.model})
     console.log(res)
   }).then(() => setLoading(false))

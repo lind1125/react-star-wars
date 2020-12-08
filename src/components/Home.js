@@ -37,9 +37,11 @@ function Home() {
     if (loading){
         return <Loader />
       }else {
+        console.log(starships)
      return (starships.map((ship, index) => {
-       return (
-        <Link to={{pathname:`/starships/${(index +2)}`}} >
+      console.log(ship.url) 
+      return (
+        <Link to={{pathname:`/starships/${index +2}`, state: {ship}}} >
           <div key={starships.index} className="col s12 m6">
             <div className="card blue-grey darken-1">
               <div className="card-content white-text">
