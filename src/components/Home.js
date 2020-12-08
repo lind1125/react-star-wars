@@ -17,7 +17,7 @@ function Home() {
 
   // useEffect runs everytime the component loads
   useEffect(() => {
-    // pagination taken from Monica's code snippet in Slack Debugging
+    // pagination solution taken from Monica's code snippet in Slack Debugging
     let url1 = 'https://swapi.dev/api/starships/'
     let url2 = 'http://swapi.dev/api/starships/?page=2'
     let url3 = 'http://swapi.dev/api/starships/?page=3'
@@ -39,18 +39,15 @@ function Home() {
       }else {
      return (starships.map((ship, index) => {
        return (
-        <div key={starships.index} className="col s12 m6">
-          <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
-              <span className="card-title">{ship.name}</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div className="card-action">
-              <Link to={{pathname:`/starships/${(index +1)}`}} >Ship Info</Link>
+        <Link to={{pathname:`/starships/${(index +2)}`}} >
+          <div key={starships.index} className="col s12 m6">
+            <div className="card blue-grey darken-1">
+              <div className="card-content white-text">
+                <span className="card-title">{ship.name}</span>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>    
         )
       }))}
   }
