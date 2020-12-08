@@ -7,6 +7,7 @@ import Loader from './common/Loader'
 
 
 
+
 function Home() {
 
   // setting up initial state
@@ -27,7 +28,6 @@ function Home() {
     .then(responses=>{
       responses.map(response=>myarray.push(...response.data.results))
       setStarships(myarray, ...starships)
-      // console.log(starships)
     })
     .then(() => setLoading(false))
   }, [])
@@ -37,10 +37,7 @@ function Home() {
     if (loading){
         return <Loader />
       }else {
-        console.log(starships)
-     return (starships.map((ship, index) => {
-      console.log(ship.url) 
-      return (
+     return (starships.map((ship, index) => ( 
         <Link to={{pathname:`/starships/${index +2}`, state: {ship}}} >
           <div key={starships.index} className="col s12 m6">
             <div className="card blue-grey darken-1">
@@ -50,13 +47,12 @@ function Home() {
             </div>
           </div>
         </Link>    
-        )
-      }))}
+      )))}
   }
 
   return (
     <div className="container">
-      <h1>SHIPS!!!</h1>
+      <h1 className="center">SHIPS!!!</h1>
      <div className="row">{renderShipList()}</div>
     </div>
   )

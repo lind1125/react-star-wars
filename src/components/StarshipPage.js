@@ -8,7 +8,7 @@ import { render } from '@testing-library/react'
 
 
 function StarshipPage(props) {
-console.log(props.location.state.ship.url)
+ let apiUrl = props.location.state.ship.url
  // setting up initial state
  const [starshipInfo, setStarshipInfo] = useState({name: '', model: ''})
 
@@ -16,9 +16,8 @@ console.log(props.location.state.ship.url)
  const [loading, setLoading] = useState(true)
 
  useEffect(() => {
-  axios.get(props.location.state.ship.url).then((res) =>{
+  axios.get(apiUrl).then((res) =>{
     setStarshipInfo({name: res.data.name, model: res.data.model})
-    console.log(res)
   }).then(() => setLoading(false))
   .catch(err => console.log(err))
  }, [])
@@ -27,7 +26,6 @@ console.log(props.location.state.ship.url)
   if (loading){
       return <Loader />
     }else {
-      console.log(starshipInfo)
    return ( 
     <div className="col s12 m6">
     <div className="card blue-grey darken-1">
@@ -45,6 +43,7 @@ console.log(props.location.state.ship.url)
  
   return (
     <div className="container">
+      <h1 className="center">Ship Info!</h1>
       {renderShipInfo()}
     </div>
   )
