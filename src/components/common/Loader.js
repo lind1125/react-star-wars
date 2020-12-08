@@ -5,7 +5,9 @@ function Loader() {
 
   return (
     <div>
-      Page is loading
+      <div className="progress">
+      <div className="indeterminate"></div>
+    </div>
     </div>
   )
 }
