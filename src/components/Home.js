@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 //components
 import Loader from './common/Loader'
@@ -16,7 +17,7 @@ function Home() {
 
   // useEffect runs everytime the component loads
   useEffect(() => {
-    // pagination taken from Monica's code snippet
+    // pagination taken from Monica's code snippet in Slack Debugging
     let url1 = 'https://swapi.dev/api/starships/'
     let url2 = 'http://swapi.dev/api/starships/?page=2'
     let url3 = 'http://swapi.dev/api/starships/?page=3'
@@ -36,9 +37,8 @@ function Home() {
     if (loading){
         return <Loader />
       }else {
-     return (starships.map((ship) => {
+     return (starships.map((ship, index) => {
        return (
-      <div className="container">
         <div key={starships.index} className="col s12 m6">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
@@ -47,19 +47,18 @@ function Home() {
               I am convenient because I require little markup to use effectively.</p>
             </div>
             <div className="card-action">
-              <a href="#">This is a link</a>
+              <Link to={{pathname:`/starships/${(index +1)}`}} >Ship Info</Link>
             </div>
           </div>
         </div>
-      </div>
         )
       }))}
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>SHIPS!!!</h1>
-      {renderShipList()}
+     <div className="row">{renderShipList()}</div>
     </div>
   )
 }
